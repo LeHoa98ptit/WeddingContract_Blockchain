@@ -1,0 +1,159 @@
+<!-- index.html -->
+<html>
+
+<head>
+    <title>Wedding Contract Project</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.3.5/dist/web3.min.js"></script>
+    <!-- <script type="text/javascript" src="ethereumjs-tx-1.3.3.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/ethereumjs-util@7.1.5/dist.browser/index.min.js"></script> -->
+    <script type="text/javascript" src="app.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 50px 0 50px 0;
+        }
+
+        .container {
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div class="container">
+            <h2 class="mb-4 mt-4">Connect to MetaMask</h2>
+            <button class="btn btn-success" id="connectButton">Connect</button>
+            <p id="status">Status: Not connected</p>
+        </div>
+    </section>
+    <section style="background-color: #fbfbfb">
+        <div class="container">
+            <h2 class="mt-4">Create Wedding Certificate</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="partner1">Husband's Name:</label>
+                        <input class="form-control" id="partner1" placeholder="Enter Husband's Name" type="text">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="partner2">Wife's Name:</label>
+                        <input class="form-control" id="partner2" placeholder="Enter Wife's Name" type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="chil1">Child's Name:</label>
+                        <input class="form-control" id="chil1" placeholder="Enter Child's Name" type="text">
+                    </div>
+                </div>
+                <!-- <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="chil2">Child's Name:</label>
+                        <input class="form-control" id="chil2" placeholder="Enter Child's Name" type="text">
+                    </div>
+                </div> -->
+            </div>
+            <div class="row" style="justify-content: center;">
+                <button id="createCertificateButton" class="btn btn-primary col-md-3">Create Wedding Contract</button>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group transactionHash ">
+                        <label for="transactionHash">Transaction Hash:</label>
+                        <div class="input-group mb-3">
+                            <input class="form-control col-md-9" type="text" id="transactionHash" readonly>
+                            <button class="btn btn-success" id="viewOnEtherscan">View on Etherscan</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section style="background-color: #fbfbfb">
+        <div class="container">
+            <h2 class="mt-4">Check Wedding Contract</h2>
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="certificateAddressInput">Wedding Contract:</label>
+                        <div class="input-group mb-3">
+                            <input class="form-control col-md-6" type="text" id="certificateAddressInput" readonly>
+                            <button class="btn btn-success" id="checkCertificateButton">Check Certificate</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Spouse 1:</label>
+                        <input class="form-control" id="spouse1" readonly type="text">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Spouse 2:</label>
+                        <input class="form-control" id="spouse2" readonly type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Children1 Name:</label>
+                        <input class="form-control" id="spouse3" readonly type="text">
+                    </div>
+                </div>
+                <!-- <div class="col-md-6">
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Spouse 2:</label>
+                    <input class="form-control" id="spouse2" readonly type="text">
+                </div>
+            </div> -->
+            </div>
+        </div>
+    </section>
+    <!-- <h2>Connect to MetaMask</h2>
+        <button id="connectButton">Connect</button>
+        <p id="status">Status: Not connected</p>
+
+        <h2>Create Wedding Certificate</h2>
+        <label for="partner1">Partner 1 Name:</label>
+        <input type="text" id="partner1" placeholder="Enter Partner 1's Name">
+        <label for="partner2">Partner 2 Name:</label>
+        <input type="text" id="partner2" placeholder="Enter Partner 2's Name">
+        <button id="createCertificateButton">Create Certificate</button>
+        <div class="transactionHash">
+            <label for="transactionHash">Transaction Hash:</label>
+            <input type="text" id="transactionHash" readonly>
+        </div>
+        <div>
+            <button id="viewOnEtherscan">View on Etherscan</button>
+        </div>
+        <h2>Check Certificate</h2>
+        <label for="certificateAddressInput">Certificate Address:</label>
+        <input type="text" id="certificateAddressInput" placeholder="Enter Certificate Address">
+        <button id="checkCertificateButton">Check Certificate</button>
+        <div class="">
+            <label for="spouse1">Spouse 1:</label>
+            <input type="text" id="spouse1" readonly>
+        </div>
+        <div class="">
+            <label for="spouse2">Spouse 2:</label>
+            <input type="text" id="spouse2" readonly>
+        </div> -->
+
+</body>
+<!-- <script type="module" src="app.js"></script> -->
+
+</html>
